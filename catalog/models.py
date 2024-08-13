@@ -1,4 +1,6 @@
+import django.utils.timezone
 from django.db import models
+import datetime
 
 
 class Product(models.Model):
@@ -18,6 +20,7 @@ class Product(models.Model):
 class Category(models.Model):
     name = models.CharField('наименование', max_length=50)
     description = models.CharField('описание', max_length=150)
+    created_at = models.DateField('дата создания', default=django.utils.timezone.now())
 
     class Meta:
         verbose_name = 'категория'
