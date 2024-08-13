@@ -2,14 +2,23 @@ from django.db import models
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=50, verbose_name='наименование'),
-    description = models.CharField(max_length=150, verbose_name='описание'),
-    image = models.ImageField(upload_to='images', blank=True, null=True, verbose_name='изображение')
-    category = models.CharField(max_length=50, verbose_name='категория'),
-    price = models.DecimalField(max_length=15, verbose_name='цена за штуку'),
-    created = models.DateField(verbose_name='дата создания'),
-    changed = models.DateField(verbose_name='дата последнего изменения')
+    name = models.CharField('наименование', max_length=50)
+    description = models.CharField('описание', max_length=150)
+    image = models.ImageField('изображение', upload_to='images', blank=True, null=True)
+    category = models.CharField('категория', max_length=50)
+    price = models.DecimalField('цена за штуку', max_digits=10, decimal_places=2)
+    created = models.DateField('дата создания')
+    changed = models.DateField('дата последнего изменения')
 
     class Meta:
         verbose_name = 'товар'
         verbose_name_plural = 'товары'
+
+
+class Category(models.Model):
+    name = models.CharField('наименование', max_length=50)
+    description = models.CharField('описание', max_length=150)
+
+    class Meta:
+        verbose_name = 'категория'
+        verbose_name_plural = 'категории'
