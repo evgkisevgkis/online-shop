@@ -1,0 +1,168 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "овощ",
+      "description": "съедобная часть некоторых растений",
+      "created_at": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "фрукт",
+      "description": "сочный съедобный плод растения",
+      "created_at": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "крупа",
+      "description": "пищевой продукт из цельных или дробленых зерен",
+      "created_at": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "name": "мясо",
+      "description": "белковый продукт животного происхождения",
+      "created_at": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 5,
+    "fields": {
+      "name": "молочный продукт",
+      "description": "продукт, вырабатываемый из молока",
+      "created_at": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "крупа гречневая",
+      "description": "крупа, которую получают из плодов гречихи",
+      "image": "",
+      "category": 3,
+      "price": "120.00",
+      "created": "2024-09-29"
+    }
+  },
+    {
+    "model": "catalog.product",
+    "fields": {
+      "name": "крупа рисовая",
+      "description": "крупа, вырабатываемая из риса",
+      "image": "",
+      "category": 3,
+      "price": "110.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "помидоры Черри",
+      "description": "мелкоплодные томаты различных сортов",
+      "image": "",
+      "category": 1,
+      "price": "220.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "огурцы корнишоны",
+      "description": "небольшие огурцы с интересным вкусом",
+      "image": "",
+      "category": 1,
+      "price": "180.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "бананы",
+      "description": "очень вкусные",
+      "image": "",
+      "category": 2,
+      "price": "120.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "яблоки Гренни Смит",
+      "description": "крупный размер и кисло-сладкий вкус",
+      "image": "",
+      "category": 2,
+      "price": "120.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "филе кролика",
+      "description": "мясо кролика",
+      "image": "",
+      "category": 4,
+      "price": "600.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "курица-гриль",
+      "description": "обжаренная тушка и приправы",
+      "image": "",
+      "category": 4,
+      "price": "650.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "коктейль вишневый",
+      "description": "молочный коктейль со вкусом вишни",
+      "image": "",
+      "category": 5,
+      "price": "40.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "коктейль клубничный",
+      "description": "молочный коктейль со вкусом клубники",
+      "image": "",
+      "category": 5,
+      "price": "35.00",
+      "created": "2024-09-29"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "fields": {
+      "name": "коктейль земляничный",
+      "description": "молочный коктейль со вкусом земляники",
+      "image": "",
+      "category": 5,
+      "price": "50.00",
+      "created": "2024-09-29"
+    }
+  }
+]
