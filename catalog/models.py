@@ -18,7 +18,6 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='категория')
     price = models.DecimalField('цена за штуку', max_digits=10, decimal_places=2)
     created = models.DateField('дата создания', default=django.utils.timezone.now)
-    changed = models.DateField('дата последнего изменения')
 
     class Meta:
         verbose_name = 'товар'
