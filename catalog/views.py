@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from catalog.models import Product
 
 
 def home(request):
-    return render(request, 'home.html')
+    products = Product.objects.order_by('-created')[:5]
+    print(products)
+    return render(request, 'home.html', {'products': products})
 
 
 def contacts(request):

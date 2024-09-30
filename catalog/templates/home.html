@@ -41,7 +41,13 @@
             </div>
         </div>
     </div>
-
+<div>
+<ul class="list-group">
+    {% for product in products %}
+  <li class="list-group-item">{{ product.name }} - {{ product.price }}</li>
+    {% endfor %}
+</ul>
+</div>
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
             <div class="col-12 col-md">
