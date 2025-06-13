@@ -19,32 +19,32 @@
     <h1 class="display-4">Skystore</h1>
     <p class="lead">Skystore - это отличный магазин качественных продуктов питания</p>
 </div>
-
-<div class="container">
-    <div class="row text-center">
-        <div class="col-3">
-            <div class="card mb-4 box-shadow">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Удобный сервис рассылок</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$ 140</h1>
-                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li>- Неограниченная лицензия</li>
-                        <li>- Поддержка</li>
-                        <li>- Установка на сервер</li>
-                        <li>- Получение обновлений</li>
-                    </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
-                </div>
-            </div>
-        </div>
-    </div>
 <div>
 <ul class="list-group">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Наименование</th>
+      <th scope="col">Категория</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Создан</th>
+      <th scope="col">Описание</th>
+    </tr>
+  </thead>
+  <tbody>
     {% for product in products %}
-  <li class="list-group-item">{{ product.name }} - {{ product.price }}</li>
+    <tr>
+      <th scope="row"> {{ product.id }}</th>
+      <td>{{ product.name }}</td>
+      <td>{{ product.category.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.created }}</td>
+      <td>{{ product.description|truncatechars:10 }}</td>
+    </tr>
     {% endfor %}
+  </tbody>
+</table>
 </ul>
 </div>
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
