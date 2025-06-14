@@ -17,7 +17,9 @@
                         <li>- категория: {{ one_item.category.name }}</li>
                         <li>- дата создания: {{ one_item.created }}</li>
                         <li>- описание: {{ one_item.description }}</li>
-                        <li> {{ one_item.image }}</li>
+                        {% if one_item.image %}
+                        <li> <img src="{{ one_item.image.url }}" width="200px" height="200px" alt="Ошибка загрузки изображения"></li>
+                        {% endif %}
                     </ul>
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
                 </div>
