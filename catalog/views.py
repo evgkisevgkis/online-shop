@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from catalog.models import Product
+from django.views.generic import ListView
 
+class ProductListView(ListView):
+    model = Product
 
-def home(request):
-    products = Product.objects.order_by('-created')[:5]
-    print(products)
-    return render(request, 'catalog/home.html', {'products': products})
+    def get_queryset(self):
+        return self.model.objects.order_by('-created')[:5]
 
 
 def contacts(request):
