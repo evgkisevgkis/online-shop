@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from catalog.models import Product
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
+
 
 class ProductListView(ListView):
     model = Product
@@ -18,9 +19,6 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-def item(request, item_id):
-    one_item = Product.objects.get(pk=item_id)
-    context = {
-        'one_item': one_item,
-    }
-    return render(request, 'catalog/item.html', context)
+class ProductDetailView(DetailView):
+    model = Product
+
