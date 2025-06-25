@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+
+from catalog.forms import ContactForm
 from catalog.models import Product
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
 
 
 class ProductListView(ListView):
@@ -10,13 +13,10 @@ class ProductListView(ListView):
         return self.model.objects.order_by('-created')[:5]
 
 
-def contacts(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print(f'{name} ({phone}) - {message}')
-    return render(request, 'catalog/contacts.html')
+class ContactView(CreateView):
+    template_name = 'catalog/contacts.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('contacts')
 
 
 class ProductDetailView(DetailView):
