@@ -1,0 +1,24 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% include 'blog/blog_h.html' %}
+<main class="container">
+    {% if object.image %}
+    <img src="{{ object.image.url }}" class="img-fluid" alt="...">
+    {% endif %}
+    <div class="row g-5">
+        <article class="blog-post"><h2 class="display-5 link-body-emphasis mb-1">{{ object.name }}</h2>
+            <p class="blog-post-meta">Дата публикации: {{ object.date_created }}</p>
+            <dl>
+                <dt>SLUG</dt>
+                <dd>{{ object.slug }}</dd>
+                <dt>Количество просмотров</dt>
+                <dd>{{ object.views_count }}</dd>
+            </dl>
+            <p class="lead">
+                {{ object.content }}
+            </p>
+        </article>
+    </div>
+    </div>
+</main>
+{% endblock %}

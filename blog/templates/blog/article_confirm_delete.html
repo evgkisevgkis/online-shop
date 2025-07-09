@@ -1,0 +1,12 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% include 'blog/blog_h.html' %}
+<div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+    <form method="post">
+        {% csrf_token %}
+        <p>Вы точно хотите статью "{{ object.name }}"?</p>
+        <button class="btn btn-danger rounded-pill px-3" type="submit">Удалить</button>
+        <a href="{% url 'blog:blog' %}" class="btn btn-secondary rounded-pill px-3" type="">Вернуться</a>
+    </form>
+</div>
+{% endblock %}
