@@ -1,0 +1,37 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% include 'blog/blog_h.html' %}
+<main class="container">
+    {% for object in object_list %}
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0">{{ object.name }}</h3>
+                    <div class="mb-1 text-body-secondary">{{ object.date_created }}</div>
+                    <p class="card-text mb-auto">{{ object.content|truncatechars:20 }}</p> <a
+                        href="{% url 'blog:blog-detail' object.pk %}"
+                        class="icon-link gap-1 icon-link-hover stretched-link">
+                    Продолжить чтение
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a></div>
+                <div class="col-auto d-none d-lg-block">
+                    {% if object.image %}
+                    <img src="{{ object.image.url }}" width="200px" height="200px" alt="Ошибка загрузки изображения">
+                    {% else %}
+                    <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img " height="250"
+                         preserveAspectRatio="xMidYMid slice" role="img" width="200" xmlns="http://www.w3.org/2000/svg">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c"></rect>
+                        <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                    </svg>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}

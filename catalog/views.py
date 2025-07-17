@@ -1,25 +1,24 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+
+from catalog.forms import ContactForm
 from catalog.models import Product
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
 
 
-def home(request):
-    products = Product.objects.order_by('-created')[:5]
-    print(products)
-    return render(request, 'catalog/home.html', {'products': products})
+class ProductListView(ListView):
+    model = Product
+
+    def get_queryset(self):
+        return self.model.objects.order_by('-created')[:5]
 
 
-def contacts(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print(f'{name} ({phone}) - {message}')
-    return render(request, 'catalog/contacts.html')
+class ContactView(CreateView):
+    template_name = 'catalog/contacts.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('contacts')
 
 
-def item(request, item_id):
-    one_item = Product.objects.get(pk=item_id)
-    context = {
-        'one_item': one_item,
-    }
-    return render(request, 'catalog/item.html', context)
+class ProductDetailView(DetailView):
+    model = Product
+

@@ -34,3 +34,13 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'товар'
         verbose_name_plural = 'товары'
+
+
+class Contact(models.Model):
+    name = models.CharField('имя', max_length=30)
+    phone = models.CharField('телефон', max_length=12)
+    message = models.TextField()
+
+    class Meta:
+        verbose_name = 'обратная связь'
+        verbose_name_plural = 'обратные связи'
