@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -22,7 +23,16 @@ class ArticleDetailView(DetailView):
         self.object = super().get_object(queryset)
         self.object.views_count += 1
         self.object.save()
+        if self.object.views_count == 100:
+            self.send_notification(self.object)
         return self.object
+
+    def send_notification(self, article):
+        subject = f'Статья {article.name} набрала 100 просмотров'
+        message = 'Ура, статья набрала 100 просмотров.'
+        from_email = 'evgeny-kiselev-95@yandex.ru'
+        recipient_list = ['evgkisevgkis@gmail.com']
+        send_mail(subject, message, from_email, recipient_list)
 
 
 class ArticleCreateView(CreateView):
