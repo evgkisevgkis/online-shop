@@ -9,6 +9,11 @@ class ArticleListView(ListView):
     model = Article
     ordering = '-date_created'
 
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(is_published=True)
+        return queryset
+
 class ArticleDetailView(DetailView):
     model = Article
 
