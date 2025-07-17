@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from pytils.translit import slugify
 
 from blog.models import Article
 
@@ -28,6 +29,13 @@ class ArticleCreateView(CreateView):
     model = Article
     fields = ('name', 'content', 'image', 'is_published')
     success_url = reverse_lazy('blog:blog')
+
+    def form_valid(self, form):
+        if form.is_valid():
+            new_article = form.save()
+            new_article.slug = slugify(new_article.name)
+            new_article.save()
+            return super().form_valid(form)
 
 
 class ArticleUpdateView(UpdateView):
