@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from catalog.forms import ContactForm
+from catalog.forms import ContactForm, ProductForm
 from catalog.models import Product
-from django.views.generic import ListView, DetailView, TemplateView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
 class ProductListView(ListView):
@@ -22,3 +22,19 @@ class ContactView(CreateView):
 class ProductDetailView(DetailView):
     model = Product
 
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('home')
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    def get_success_url(self):
+        return reverse_lazy('item', kwargs={'pk': self.object.pk})
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('home')
