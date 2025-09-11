@@ -1,6 +1,6 @@
 from django import forms
 
-from catalog.models import Contact, Product
+from catalog.models import Contact, Product, Version
 
 
 class ContactForm(forms.ModelForm):
@@ -28,4 +28,10 @@ class ProductForm(forms.ModelForm):
             if bad_word in cleaned_data:
                 raise forms.ValidationError('В описании товара не должно быть запрещенных слов')
         return cleaned_data
+
+
+class VersionForm(forms.ModelForm):
+    class Meta:
+        model = Version
+        fields = '__all__'
 
