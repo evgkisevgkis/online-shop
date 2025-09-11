@@ -36,6 +36,18 @@ class Product(models.Model):
         verbose_name_plural = 'товары'
 
 
+class Version(models.Model):
+    name = models.CharField('наименование', max_length=150)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='продукт')
+    number = models.FloatField()
+    flag = models.BooleanField()
+
+    class Meta:
+        verbose_name = 'версия'
+        verbose_name_plural = 'версии'
+
+
+
 class Contact(models.Model):
     name = models.CharField('имя', max_length=30)
     phone = models.CharField('телефон', max_length=12)
