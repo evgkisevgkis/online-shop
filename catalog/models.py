@@ -7,6 +7,9 @@ class Category(models.Model):
     description = models.CharField('описание', max_length=150)
     created_at = models.DateField('дата создания', default=django.utils.timezone.now)
 
+    def __str__(self):
+        return self.name
+
     @classmethod
     def truncate(cls):
         with connection.cursor() as cursor:
@@ -25,6 +28,9 @@ class Product(models.Model):
     price = models.DecimalField('цена за штуку', max_digits=10, decimal_places=2)
     created = models.DateField('дата создания', default=django.utils.timezone.now)
 
+    def __str__(self):
+        return self.name
+
     @classmethod
     def truncate(cls):
         with connection.cursor() as cursor:
@@ -41,6 +47,9 @@ class Version(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='продукт')
     number = models.FloatField()
     flag = models.BooleanField()
+
+    def __str__(self):
+        return f"{self.name} v {self.number}"
 
     class Meta:
         verbose_name = 'версия'
