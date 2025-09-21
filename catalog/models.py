@@ -45,8 +45,8 @@ class Product(models.Model):
 class Version(models.Model):
     name = models.CharField('наименование', max_length=150)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='продукт')
-    number = models.FloatField()
-    flag = models.BooleanField()
+    number = models.FloatField(verbose_name='номер')
+    flag = models.BooleanField(verbose_name='признак')
 
     def __str__(self):
         return f"{self.name} v {self.number}"

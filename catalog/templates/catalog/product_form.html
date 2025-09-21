@@ -1,24 +1,38 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
-<div class="col-lg-6 col-xxl-4 my-5 mx-auto">
-    <div class="d-grid gap-2">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
+<form method="post" class="row" enctype="multipart/form-data">
+    <div class="col-6">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                Продукт
+            </div>
+            <div class="card-body">
             {{ form.as_p }}
+            </div>
             <button class="btn btn-primary" type="submit">
                 {% if object %}
-                    Сохранить изменения
+                Сохранить изменения
                 {% else %}
-                    Создать
+                Создать
                 {% endif %}
             </button>
-            <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
-                {{ formset.management_form }}
-                {% for form in formset.forms %}
-                {{ form.as_p }}
-                {% endfor %}
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                Версия
+            </div>
+            <div class="card-body">
+            {{ formset.management_form }}
+            {% for form in formset.forms %}
+            {{ form.as_p }}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</form>
+
+
 {% endblock %}

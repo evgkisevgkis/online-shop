@@ -33,5 +33,5 @@ class ProductForm(forms.ModelForm):
 class VersionForm(forms.ModelForm):
     class Meta:
         model = Version
-        fields = '__all__'
+        fields = ('name', 'number', 'flag')
 
