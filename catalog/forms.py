@@ -18,7 +18,7 @@ class ProductForm(forms.ModelForm):
     def clean_name(self):
         cleaned_data = self.cleaned_data['name']
         for bad_word in self.bad_words:
-            if bad_word in cleaned_data:
+            if bad_word in cleaned_data.lower():
                 raise forms.ValidationError('В наименовании товара не должно быть запрещенных слов')
         return cleaned_data
 
