@@ -60,7 +60,7 @@ class ProductUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        FormSet = inlineformset_factory(self.model, Version, form=VersionForm, extra=0)
+        FormSet = inlineformset_factory(self.model, Version, form=VersionForm, extra=1)
         if self.request.method == 'POST':
             formset = FormSet(self.request.POST, instance=self.object)
         else:
@@ -77,8 +77,8 @@ class ProductUpdateView(UpdateView):
                 if formset.is_valid():
                     formset.instance = self.object
                     formset.save()
-
-        return super().form_valid(form)
+                    return super().form_valid(form)
+        return super().form_invalid(form)
 
 
 class ProductDeleteView(DeleteView):

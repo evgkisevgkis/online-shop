@@ -35,3 +35,13 @@ class VersionForm(forms.ModelForm):
         model = Version
         fields = ('name', 'number', 'flag')
 
+    def clean_flag(self):
+        cleaned_data = self.cleaned_data['flag']
+        product_id = self.instance.product.pk
+        current_version_id = self.instance.pk
+        active_versions = Version.objects.filter(product=product_id, flag=True).exclude(id=current_version_id)
+        if cleaned_data and active_versions.exists():
+            # if Version.objects.filter(product=product_id, flag=True).count() >= 1:
+            raise forms.ValidationError('Должна быть только одна активная версия')
+        return cleaned_data
+
