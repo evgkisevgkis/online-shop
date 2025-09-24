@@ -25,7 +25,7 @@ class ProductForm(forms.ModelForm):
     def clean_description(self):
         cleaned_data = self.cleaned_data['description']
         for bad_word in self.bad_words:
-            if bad_word in cleaned_data:
+            if bad_word in cleaned_data.lower():
                 raise forms.ValidationError('В описании товара не должно быть запрещенных слов')
         return cleaned_data
 
@@ -41,7 +41,5 @@ class VersionForm(forms.ModelForm):
         current_version_id = self.instance.pk
         active_versions = Version.objects.filter(product=product_id, flag=True).exclude(id=current_version_id)
         if cleaned_data and active_versions.exists():
-            # if Version.objects.filter(product=product_id, flag=True).count() >= 1:
             raise forms.ValidationError('Должна быть только одна активная версия')
         return cleaned_data
-
