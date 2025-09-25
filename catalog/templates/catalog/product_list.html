@@ -5,37 +5,38 @@
     <p class="lead">Skystore - это отличный магазин цифровых товаров</p>
 </div>
 <div>
-<ul class="list-group">
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Наименование</th>
-      <th scope="col">Категория</th>
-      <th scope="col">Цена</th>
-      <th scope="col">Создан</th>
-      <th scope="col">Описание</th>
-      <th scope="col">Активная версия</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for product in object_list %}
-    <tr>
-      <th scope="row"> {{ product.id }}</th>
-      <td>{{ product.name }}</td>
-      <td>{{ product.category.name }}</td>
-      <td>{{ product.price }}</td>
-      <td>{{ product.created }}</td>
-      <td>{{ product.description|truncatechars:10 }}</td>
-      {% for version in product.version_set.all %}
-        {% if version.flag %}
-      <td>{{ version }}</td>
-        {% endif %}
-      {% endfor %}
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-</ul>
+    <a class="btn btn-primary" href="/create" role="button">Добавить продукт</a>
+    <ul class="list-group">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Наименование</th>
+                <th scope="col">Категория</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Создан</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Активная версия</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in object_list %}
+            <tr>
+                <th scope="row"> {{ product.id }}</th>
+                <td><a href="{% url 'item' pk=product.id %}"> {{ product.name }} </a></td>
+                <td>{{ product.category.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.created }}</td>
+                <td>{{ product.description|truncatechars:10 }}</td>
+                {% for version in product.version_set.all %}
+                {% if version.flag %}
+                <td>{{ version }}</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </ul>
 </div>
 {% endblock %}

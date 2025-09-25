@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row text-center">
-        <div class="col-3">
+        <div class="col-6">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
@@ -18,10 +18,15 @@
                         <li>- дата создания: {{ object.created }}</li>
                         <li>- описание: {{ object.description }}</li>
                         {% if object.image %}
-                        <li> <img src="{{ object.image.url }}" width="200px" height="200px" alt="Ошибка загрузки изображения"></li>
+                        <li><img src="{{ object.image.url }}" width="200px" height="200px"
+                                 alt="Ошибка загрузки изображения"></li>
                         {% endif %}
                     </ul>
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                    <a class="btn btn-secondary" href="{% url 'product-update' pk=object.pk %}" role="button">Редактировать
+                        продукт</a>
+                    <a class="btn btn-danger" href="{% url 'product-delete' pk=object.pk %}" role="button">Удалить
+                        продукт</a>
                 </div>
             </div>
         </div>

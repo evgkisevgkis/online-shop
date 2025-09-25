@@ -3,7 +3,7 @@
 <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
     <form method="post">
         {% csrf_token %}
-        <p>Вы точно хотите продукт "{{ object.name }}"?</p>
+        <p>Вы точно хотите удалить продукт "{{ object.name }}"?</p>
         <button class="btn btn-danger rounded-pill px-3" type="submit">Удалить</button>
         <a href="{% url 'home' %}" class="btn btn-secondary rounded-pill px-3" type="">Вернуться</a>
     </form>
