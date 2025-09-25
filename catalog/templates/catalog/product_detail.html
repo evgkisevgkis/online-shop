@@ -30,6 +30,25 @@
                 </div>
             </div>
         </div>
+        {% if object.version_set.exists %}
+        <div class="col-6">
+                <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Версии {{ object.name }}</h4>
+                </div>
+                <div class="card-body">
+                    {% for version in object.version_set.all %}
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>- название: {{ version.name }}</li>
+                        <li>- номер: {{ version.number }}</li>
+                        <li>- активность: {{ version.flag }}</li>
+                    </ul>
+                    <hr>
+                    {% endfor %}
+                </div>
+                </div>
+                {% endif %}
+            </div>
     </div>
 </div>
 {% endblock %}
