@@ -8,4 +8,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         Category.truncate()
         Product.truncate()
-        os.system('python manage.py loaddata catalog_data.json')
+        os.system('python manage.py loaddata data.json')
