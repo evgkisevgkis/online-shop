@@ -1,4 +1,5 @@
 from django.core.mail import send_mail
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView
@@ -14,6 +15,19 @@ class RegisterView(CreateView):
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:login')
 
+    def form_valid(self, form):
+        if form.is_valid:
+            new_user = form.save()
+            send_mail(
+                subject='Поздравляем с регистрацией!',
+                message=f'''Спасибо за регистрацию на нашем сайте! Перейдите по этой ссылке 
+                для подтверждения почты: http://127.0.0.1:8000/users/verification/?code={new_user.code}''',
+                from_email='evgeny-kiselev-95@yandex.ru',
+                recipient_list = [new_user.email]
+            )
+            return super().form_valid(form)
+        else:
+            return super().form_invalid(form)
 
 class ProfileView(UpdateView):
     model = User
@@ -37,3 +51,12 @@ def generate_new_password(request):
     return redirect(reverse('users:profile'))
 
 
+def email_verification(request):
+    u_code = request.GET.get('code')
+    all_users = User.objects.filter(is_active=False)
+    for u in all_users:
+        if u_code == u.code:
+            u.is_active = True
+            u.save()
+            return HttpResponse('<h1>Пользователь успешно верифицирован</h1>')
+    return HttpResponse('<h1>Верификация не пройдена</h1>')
