@@ -27,6 +27,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='категория')
     price = models.DecimalField('цена за штуку', max_digits=10, decimal_places=2)
     created = models.DateField('дата создания', default=django.utils.timezone.now)
+    creator = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='добавивший', blank=True, null=True)
 
     def __str__(self):
         return self.name
