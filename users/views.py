@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView
+
+from config.settings import EMAIL_HOST_USER
 from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
 from string import ascii_letters,digits
@@ -22,7 +24,7 @@ class RegisterView(CreateView):
                 subject='Поздравляем с регистрацией!',
                 message=f'''Спасибо за регистрацию на нашем сайте! Перейдите по этой ссылке 
                 для подтверждения почты: http://127.0.0.1:8000/users/verification/?code={new_user.code}''',
-                from_email='evgeny-kiselev-95@yandex.ru',
+                from_email=EMAIL_HOST_USER,
                 recipient_list = [new_user.email]
             )
             return super().form_valid(form)
