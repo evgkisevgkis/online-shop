@@ -28,6 +28,7 @@ class Product(models.Model):
     price = models.DecimalField('цена за штуку', max_digits=10, decimal_places=2)
     created = models.DateField('дата создания', default=django.utils.timezone.now)
     creator = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='добавивший', blank=True, null=True)
+    is_published = models.BooleanField('опубликован ли', default=False)
 
     def __str__(self):
         return self.name

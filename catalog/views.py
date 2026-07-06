@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db import transaction
 from django.forms import inlineformset_factory
 from django.shortcuts import render
@@ -39,9 +39,12 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
             return super().form_invalid(form)
 
 
-class ProductUpdateView(LoginRequiredMixin, UpdateView):
+class ProductUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
+   
+    permission_required = 'catalog.change_product'
+
     def get_success_url(self):
         return reverse_lazy('item', kwargs={'pk': self.object.pk})
 
