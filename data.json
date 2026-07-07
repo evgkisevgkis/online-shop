@@ -1,241 +1,265 @@
 [
-  {
+{
     "model": "catalog.category",
     "pk": 1,
     "fields": {
-      "name": "обучающие материалы",
-      "description": "курсы, гайды, мастер-классы, лекции",
-      "created_at": "2025-09-16"
+        "name": "обучающие материалы",
+        "description": "курсы, гайды, мастер-классы, лекции",
+        "created_at": "2025-09-16"
     }
-  },
-  {
+},
+{
     "model": "catalog.category",
     "pk": 2,
     "fields": {
-      "name": "медиаконтент",
-      "description": "музыка, видео, подкасты",
-      "created_at": "2025-09-16"
+        "name": "медиаконтент",
+        "description": "музыка, видео, подкасты",
+        "created_at": "2025-09-16"
     }
-  },
-  {
+},
+{
     "model": "catalog.category",
     "pk": 3,
     "fields": {
-      "name": "программное обеспечение",
-      "description": "программы, приложения и утилиты",
-      "created_at": "2025-09-16"
+        "name": "программное обеспечение",
+        "description": "программы, приложения и утилиты",
+        "created_at": "2025-09-16"
     }
-  },
-  {
+},
+{
     "model": "catalog.category",
     "pk": 4,
     "fields": {
-      "name": "электронные документы",
-      "description": "электронные книги, статьи, справочники, инструкции",
-      "created_at": "2025-09-16"
+        "name": "электронные документы",
+        "description": "электронные книги, статьи, справочники, инструкции",
+        "created_at": "2025-09-16"
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 1,
     "fields": {
-      "name": "видеоуроки по вышиванию",
-      "description": "станьте мастером по вышиванию уже через 3 месяца",
-      "image": "",
-      "category": 1,
-      "price": "50000.00",
-      "created": "2025-09-16"
+        "name": "видеоуроки по вышиванию",
+        "description": "станьте мастером по вышиванию уже через 3 месяца",
+        "image": "",
+        "category": 1,
+        "price": "50000.00",
+        "created": "2025-09-16",
+        "creator": null,
+        "is_published": true
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 3,
     "fields": {
-      "name": "торговый бот",
-      "description": "просто пополни баланс и торгуй, очень здорово",
-      "image": "",
-      "category": 3,
-      "price": "15000.00",
-      "created": "2025-09-16"
+        "name": "торговый бот",
+        "description": "просто пополни баланс и торгуй, очень здорово",
+        "image": "",
+        "category": 3,
+        "price": "15000.00",
+        "created": "2025-09-16",
+        "creator": null,
+        "is_published": true
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 4,
     "fields": {
-      "name": "полный сборник журналов Вокруг Света",
-      "description": "полный сборник за все годы выпуска",
-      "image": "",
-      "category": 4,
-      "price": "100000.00",
-      "created": "2025-09-16"
+        "name": "полный сборник журналов Вокруг Света",
+        "description": "полный сборник за все годы выпуска",
+        "image": "",
+        "category": 4,
+        "price": "100000.00",
+        "created": "2025-09-16",
+        "creator": null,
+        "is_published": true
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 5,
     "fields": {
-      "name": "альбом тупак",
-      "description": "крутой альбом",
-      "image": "",
-      "category": 2,
-      "price": "5000.00",
-      "created": "2025-09-21"
+        "name": "альбом тупак",
+        "description": "крутой альбом",
+        "image": "",
+        "category": 2,
+        "price": "5000.00",
+        "created": "2025-09-21",
+        "creator": null,
+        "is_published": true
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 9,
     "fields": {
-      "name": "альбом Слим Шейди",
-      "description": "ну так, пойдет",
-      "image": "",
-      "category": 2,
-      "price": "1500.00",
-      "created": "2025-09-23"
+        "name": "альбом Слим Шейди",
+        "description": "ну так, пойдет",
+        "image": "",
+        "category": 2,
+        "price": "1500.00",
+        "created": "2025-09-23",
+        "creator": null,
+        "is_published": true
     }
-  },
-  {
+},
+{
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+        "name": "111",
+        "description": "1111",
+        "image": "",
+        "category": 4,
+        "price": "500.00",
+        "created": "2026-07-07",
+        "creator": 5,
+        "is_published": false
+    }
+},
+{
     "model": "catalog.version",
     "pk": 1,
     "fields": {
-      "name": "первый",
-      "product": 5,
-      "number": 1.01,
-      "flag": true
+        "name": "первый",
+        "product": 5,
+        "number": 1.01,
+        "flag": true
     }
-  },
-  {
+},
+{
     "model": "catalog.version",
     "pk": 2,
     "fields": {
-      "name": "готовый",
-      "product": 3,
-      "number": 1.05,
-      "flag": true
+        "name": "готовый",
+        "product": 3,
+        "number": 1.05,
+        "flag": true
     }
-  },
-  {
+},
+{
     "model": "catalog.version",
     "pk": 4,
     "fields": {
-      "name": "неопубликованные",
-      "product": 4,
-      "number": 0.1,
-      "flag": false
+        "name": "неопубликованные",
+        "product": 4,
+        "number": 0.1,
+        "flag": false
     }
-  },
-  {
+},
+{
     "model": "catalog.version",
     "pk": 5,
     "fields": {
-      "name": "опубликованные",
-      "product": 4,
-      "number": 1.1,
-      "flag": true
+        "name": "опубликованные",
+        "product": 4,
+        "number": 1.1,
+        "flag": true
     }
-  },
-  {
+},
+{
     "model": "catalog.version",
     "pk": 9,
     "fields": {
-      "name": "изданный",
-      "product": 9,
-      "number": 1.0,
-      "flag": true
+        "name": "изданный",
+        "product": 9,
+        "number": 1.0,
+        "flag": true
     }
-  },
-  {
+},
+{
     "model": "catalog.version",
     "pk": 12,
     "fields": {
-      "name": "неизданный",
-      "product": 9,
-      "number": 0.1,
-      "flag": false
+        "name": "неизданный",
+        "product": 9,
+        "number": 0.1,
+        "flag": false
     }
-  },
-  {
+},
+{
     "model": "catalog.contact",
     "pk": 1,
     "fields": {
-      "name": "Test",
-      "phone": "+790412365",
-      "message": "jjjjjjjjjjjjjjjjjjjjjj"
+        "name": "Test",
+        "phone": "+790412365",
+        "message": "jjjjjjjjjjjjjjjjjjjjjj"
     }
-  },
-  {
+},
+{
     "model": "catalog.contact",
     "pk": 2,
     "fields": {
-      "name": "Test",
-      "phone": "+790412365",
-      "message": "jjjjjjjjjjjjjjjjjjjjjj"
+        "name": "Test",
+        "phone": "+790412365",
+        "message": "jjjjjjjjjjjjjjjjjjjjjj"
     }
-  },
-  {
+},
+{
     "model": "blog.article",
     "pk": 1,
     "fields": {
-      "name": "Testing Blog",
-      "slug": null,
-      "content": "Привет, ми тестируем блог",
-      "image": "images/vid-sverhu-na-starye-francuzskie-gazety.jpg",
-      "date_created": "2025-07-05",
-      "is_published": false,
-      "views_count": 5
+        "name": "Testing Blog",
+        "slug": null,
+        "content": "Привет, ми тестируем блог",
+        "image": "images/vid-sverhu-na-starye-francuzskie-gazety.jpg",
+        "date_created": "2025-07-05",
+        "is_published": false,
+        "views_count": 5
     }
-  },
-  {
+},
+{
     "model": "blog.article",
     "pk": 2,
     "fields": {
-      "name": "Важный заголовок",
-      "slug": null,
-      "content": "Важно к прочтению",
-      "image": "",
-      "date_created": "2025-07-04",
-      "is_published": true,
-      "views_count": 100
+        "name": "Важный заголовок",
+        "slug": null,
+        "content": "Важно к прочтению",
+        "image": "",
+        "date_created": "2025-07-04",
+        "is_published": true,
+        "views_count": 100
     }
-  },
-  {
+},
+{
     "model": "blog.article",
     "pk": 3,
     "fields": {
-      "name": "Новый заголовок",
-      "slug": null,
-      "content": "Очень хороший, познавательный текст",
-      "image": "",
-      "date_created": "2025-07-08",
-      "is_published": true,
-      "views_count": 1
+        "name": "Новый заголовок",
+        "slug": null,
+        "content": "Очень хороший, познавательный текст",
+        "image": "",
+        "date_created": "2025-07-08",
+        "is_published": true,
+        "views_count": 1
     }
-  },
-  {
+},
+{
     "model": "blog.article",
     "pk": 4,
     "fields": {
-      "name": "Новый заголовок",
-      "slug": null,
-      "content": "Очень хороший, познавательный текст",
-      "image": "",
-      "date_created": "2025-07-08",
-      "is_published": true,
-      "views_count": 4
+        "name": "Новый заголовок",
+        "slug": null,
+        "content": "Очень хороший, познавательный текст",
+        "image": "",
+        "date_created": "2025-07-08",
+        "is_published": true,
+        "views_count": 4
     }
-  },
-  {
+},
+{
     "model": "blog.article",
     "pk": 6,
     "fields": {
-      "name": "Новый хороший заголовок",
-      "slug": "novyij-horoshij-zagolovok",
-      "content": "Какое-то содержимое",
-      "image": "",
-      "date_created": "2025-07-17",
-      "is_published": true,
-      "views_count": 101
+        "name": "Новый хороший заголовок",
+        "slug": "novyij-horoshij-zagolovok",
+        "content": "Какое-то содержимое",
+        "image": "",
+        "date_created": "2025-07-17",
+        "is_published": true,
+        "views_count": 101
     }
-  }
+}
 ]

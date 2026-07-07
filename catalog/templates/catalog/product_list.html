@@ -21,6 +21,7 @@
             </thead>
             <tbody>
             {% for product in object_list %}
+            {% if product.is_published %}
             <tr>
                 <th scope="row"> {{ product.id }}</th>
                 <td><a href="{% url 'item' pk=product.id %}"> {{ product.name }} </a></td>
@@ -34,6 +35,7 @@
                 {% endif %}
                 {% endfor %}
             </tr>
+            {% endif %}
             {% endfor %}
             </tbody>
         </table>
