@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -35,7 +36,7 @@ class ArticleDetailView(DetailView):
         send_mail(subject, message, from_email, recipient_list)
 
 
-class ArticleCreateView(CreateView):
+class ArticleCreateView(LoginRequiredMixin, CreateView):
     model = Article
     fields = ('name', 'content', 'image', 'is_published')
     success_url = reverse_lazy('blog:blog')
@@ -48,13 +49,18 @@ class ArticleCreateView(CreateView):
             return super().form_valid(form)
 
 
-class ArticleUpdateView(UpdateView):
+class ArticleUpdateView(PermissionRequiredMixin, UpdateView):
     model = Article
     fields = ('__all__')
+    permission_required = 'blog.change_article'
     def get_success_url(self):
         return reverse_lazy('blog:blog-detail', kwargs={'pk': self.object.pk})
 
-class ArticleDeleteView(DeleteView):
+
+class ArticleDeleteView(UserPassesTestMixin, DeleteView):
     model = Article
     success_url = reverse_lazy('blog:blog')
+    
+    def test_func(self):
+        return self.request.user.is_superuser
 

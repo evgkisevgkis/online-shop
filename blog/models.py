@@ -7,5 +7,5 @@ class Article(models.Model):
     content = models.TextField('содержимое')
     image = models.ImageField('превью', upload_to='images', blank=True, null=True)
     date_created = models.DateField('дата создания', default=django.utils.timezone.now)
-    is_published = models.BooleanField('опубликовано', default=True)
+    is_published = models.BooleanField('опубликовано', default=False)
     views_count = models.IntegerField('количество просмотров', default=0)
