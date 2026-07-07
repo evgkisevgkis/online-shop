@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db import transaction
 from django.forms import inlineformset_factory
 from django.shortcuts import render
@@ -39,11 +39,12 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
             return super().form_invalid(form)
 
 
-class ProductUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
+class ProductUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
    
-    permission_required = 'catalog.change_product'
+    def test_func(self):
+        return self.request.user.has_perm('catalog.change_product') or self.get_object().creator == self.request.user
 
     def get_success_url(self):
         return reverse_lazy('item', kwargs={'pk': self.object.pk})
