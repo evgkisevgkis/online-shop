@@ -75,6 +75,8 @@ TEMPLATES = [
     },
 ]
 
+CACHE_ENABLED = True
+
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
