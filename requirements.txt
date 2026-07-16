@@ -20,6 +20,7 @@ psycopg2-binary==2.9.12
 ptyprocess==0.7.0
 pure_eval==0.2.3
 Pygments==2.20.0
+python-dotenv==1.2.2
 pytils==0.4.4
 redis==8.0.1
 six==1.17.0
